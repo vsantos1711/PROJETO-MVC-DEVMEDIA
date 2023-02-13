@@ -1,0 +1,11 @@
+version: "3"
+services:
+  web:
+    image: php:7.4-apache
+    environment:
+      - PHP_EXTENSIONS=pdo_pgsql
+    ports:
+      - 80:80
+    volumes:
+      - .:/var/www/html
+    command: sh -c "apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo_pgsql && apache2-foreground"
